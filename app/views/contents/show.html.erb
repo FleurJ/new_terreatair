@@ -3,6 +3,7 @@
 
   <p><%= @content.status %></p>
   <p class="teaser"><%= @content.teaser %></p>
+  <p><%= @content.body %> </p>
 <hr>
   <% if user_signed_in? %>
     <% if current_user.admin == true %>
