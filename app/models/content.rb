@@ -7,6 +7,8 @@ class Content < ApplicationRecord
   has_many :tags, through: :contents_tags
 
   has_rich_text :body
+  has_one_attached :img_header
+  has_one_attached :img_thumbnail
 
   validates :title, presence: true
   validates :status, presence: true, inclusion: { in: ALLOWED_STATUSES,
