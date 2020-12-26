@@ -7,6 +7,9 @@
   <%= c.input :title, label: 'Titre' %>
 
   <%= c.input :teaser, label: 'Chapeau - Teaser' %>
+  <%= c.label :corps_de_texte %>
+  <%= c.rich_text_area :body, label: 'Corps de texte' %>
+
   <%= c.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'] %>
 
     <%= c.submit "Enregistrer", class:"btn btn-primary" %>
