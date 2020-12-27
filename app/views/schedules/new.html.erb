@@ -1,13 +1,14 @@
 <div class="container margin-top">
-  <h1>Créer un nouveau créneau de réservation</h1>
+  <h1>Demande de réservation</h1>
   <hr>
   <%= simple_form_for @schedule, url: schedules_path do |f| %>
-  <%= f.association :activities, collection: @activities, input_html: { multiple: false}, label: 'Activité' %>
+  <%= f.association :activities, as: :check_boxes, collection: @activities, label: 'Activité' %>
 
   <%= f.input :schedule_date, order: [:day, :month, :year], label: 'Date' %>
   <%= f.input :classes_qty, label: 'Nombre de classes' %>
-  <%= f.input :status, label: 'Statut', collection: ['open', 'closed', 'booked'] %>
-
+  <% if current_user.admin == true %>
+    <%= f.input :status, label: 'Statut', collection: ['pending', 'validated', 'cancelled'] %>
+  <% end %>
   <%= f.submit "Enregistrer", class:"btn btn-primary" %>
   <% end %>
 </div>

@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
-  ALLOWED_STATUSES = %w[open closed booked].freeze
+  ALLOWED_STATUSES = %w[pending validated cancelled].freeze
 
   belongs_to :user
 
