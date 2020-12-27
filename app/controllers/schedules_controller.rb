@@ -23,7 +23,7 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule.destroy
-    redirect_to root_path
+    redirect_to schedules_path
   end
 
   def index
