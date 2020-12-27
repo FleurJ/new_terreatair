@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
+  before_action :find_tags, only: [:new, :edit]
 
   def show
     @activity = Activity.find(params[:id])
@@ -37,7 +38,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :status, :teaser, :body, :booking_conditions, :activity_type, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header)
+    params.require(:activity).permit(:title, :status, :teaser, :body, :booking_conditions, :activity_type, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header, tag_ids: [])
   end
 
   def authorised_user
@@ -46,5 +47,9 @@ class ActivitiesController < ApplicationController
 
   def find_activity
     @activity = Activity.find(params[:id])
+  end
+
+  def find_tags
+    @tags = Tag.all
   end
 end

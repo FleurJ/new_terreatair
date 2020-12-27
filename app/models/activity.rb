@@ -8,6 +8,9 @@ class Activity < ApplicationRecord
   has_one_attached :img_header
   has_one_attached :img_thumbnail
 
+  has_many :activities_tags, dependent: :destroy
+  has_many :tags, through: :activities_tags
+
   validates :title, presence: true
   validates :status, presence: true, inclusion: { in: ALLOWED_STATUSES,
                                                   message: "%{value} n'est pas un statut valide" }
