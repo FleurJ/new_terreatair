@@ -11,6 +11,9 @@ class Activity < ApplicationRecord
   has_many :activities_tags, dependent: :destroy
   has_many :tags, through: :activities_tags
 
+  has_many :schedules_activity, dependent: :destroy
+  has_many :schedules, through: :schedules_activity
+
   validates :title, presence: true
   validates :status, presence: true, inclusion: { in: ALLOWED_STATUSES,
                                                   message: "%{value} n'est pas un statut valide" }

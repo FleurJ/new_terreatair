@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_27_155852) do
+ActiveRecord::Schema.define(version: 2020_12_27_161320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(version: 2020_12_27_155852) do
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
+  create_table "schedules_activities", force: :cascade do |t|
+    t.bigint "schedule_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_schedules_activities_on_activity_id"
+    t.index ["schedule_id"], name: "index_schedules_activities_on_schedule_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -144,4 +153,6 @@ ActiveRecord::Schema.define(version: 2020_12_27_155852) do
   add_foreign_key "contents_tags", "contents"
   add_foreign_key "contents_tags", "tags"
   add_foreign_key "schedules", "users"
+  add_foreign_key "schedules_activities", "activities"
+  add_foreign_key "schedules_activities", "schedules"
 end
