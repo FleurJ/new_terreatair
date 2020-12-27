@@ -4,6 +4,7 @@ class Activity < ApplicationRecord
   belongs_to :user
 
   has_rich_text :body
+  has_rich_text :booking_conditions
   has_one_attached :img_header
   has_one_attached :img_thumbnail
 

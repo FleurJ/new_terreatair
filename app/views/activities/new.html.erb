@@ -8,6 +8,8 @@
   <%= f.input :teaser, label: 'Chapeau - Teaser' %>
   <%= f.label :corps_de_texte %>
   <%= f.rich_text_area :body, label: 'Corps de texte' %>
+  <%= f.label :conditions_de_réservation %>
+  <%= f.rich_text_area :booking_conditions, label: 'Conditions de réservation' %>
   <%= f.input :price, as: :float, label: 'Prix' %>
   <%= f.input :public, label: 'Public visé' %>
   <%= f.input :duration, label: "Durée de l'activité" %>

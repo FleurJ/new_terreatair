@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :status, :teaser, :body, :activity_type, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header)
+    params.require(:activity).permit(:title, :status, :teaser, :body, :booking_conditions, :activity_type, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header)
   end
 
   def authorised_user
