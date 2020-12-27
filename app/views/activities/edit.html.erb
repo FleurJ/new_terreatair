@@ -2,6 +2,7 @@
   <h1>Créer une nouvelle activité</h1>
   <hr>
   <%= simple_form_for @activity, url: activity_path, method: :patch do |f| %>
+  <%= f.association :tags, collection: @tags, as: :check_boxes, input_html: { multiple: true}, label: 'Rubrique(s)' %>
 
   <%= f.input :activity_type, label: "Type d'activité" %>
   <%= f.input :title, label: 'Titre' %>
