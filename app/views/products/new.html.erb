@@ -1,0 +1,15 @@
+<div class="container margin-top">
+  <h1>Créer un nouveau produit</h1>
+  <hr>
+  <%= simple_form_for @product, url: products_path do |c| %>
+  <%= c.input :product_type, label: 'Type de produit' %>
+  <%= c.input :name, label: 'Nom du produit' %>
+  <%= c.input :price, label: 'Prix' %>
+  <%= c.label :description %>
+  <%= c.rich_text_area :description %>
+  <%= c.input :images, as: :file, label: "Photos du produit"  %>
+  <%= c.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
+
+  <%= c.submit "Enregistrer", class:"btn btn-primary" %>
+  <% end %>
+</div>
