@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_27_190322) do
+ActiveRecord::Schema.define(version: 2020_12_28_142651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2020_12_27_190322) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activities_tags_on_activity_id"
     t.index ["tag_id"], name: "index_activities_tags_on_tag_id"
+  end
+
+  create_table "animator_schedules", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "schedule_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_animator_schedules_on_schedule_id"
+    t.index ["user_id"], name: "index_animator_schedules_on_user_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -153,6 +162,8 @@ ActiveRecord::Schema.define(version: 2020_12_27_190322) do
   add_foreign_key "activities", "users"
   add_foreign_key "activities_tags", "activities"
   add_foreign_key "activities_tags", "tags"
+  add_foreign_key "animator_schedules", "schedules"
+  add_foreign_key "animator_schedules", "users"
   add_foreign_key "contents", "users"
   add_foreign_key "contents_tags", "contents"
   add_foreign_key "contents_tags", "tags"
