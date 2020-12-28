@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_rich_text :description
   has_one_attached :avatar
+
+  has_many :animator_schedules, dependent: :destroy
+  has_many :schedules, through: :animator_schedules
 end

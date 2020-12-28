@@ -2,12 +2,14 @@
   <h1>Demande de réservation</h1>
   <hr>
   <%= simple_form_for @schedule, url: schedules_path do |f| %>
-  <%= f.association :activities, as: :check_boxes, collection: @activities, label: 'Activité' %>
-
-  <%= f.input :schedule_date, order: [:day, :month, :year], label: 'Date' %>
-  <%= f.input :classes_qty, label: 'Nombre de classes' %>
+  <%= f.input :schedule_date, order: [:day, :month, :year],required: true, label: 'Date souhaitée' %>
+  <%= f.input :classes_qty,required: true, label: 'Nombre de classes' %>
+  <%= f.association :activities, as: :check_boxes,required: true, collection: @activities, label: 'Activité' %>
+  <%= f.association :users, as: :check_boxes, :collection=> @users.map(&:firstname), label: 'Animateur ou animatrice' %>
+  <%= f.label :commentaire %>
+  <%= f.rich_text_area :comment, label: 'commentaire' %>
   <% if current_user.admin == true %>
-    <%= f.input :status, label: 'Statut', collection: ['pending', 'validated', 'cancelled'] %>
+    <%= f.input :status, label: 'Statut', collection: ['pending', 'validated', 'cancelled'], default:'pending' %>
   <% end %>
   <%= f.submit "Enregistrer", class:"btn btn-primary" %>
   <% end %>
