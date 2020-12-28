@@ -34,12 +34,15 @@ fr:
   activerecord:
     models:
       content: "contenu"
+      user: utilisateur
     attributes:
       content:
         title: "Titre"
         status: "Statut"
       schedule:
         schedule_date: "Date"
+      users:
+        save: Enregistrer
   date:
   abbr_day_names:
   - dim
