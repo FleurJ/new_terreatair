@@ -1,0 +1,19 @@
+<div class="container margin-top">
+  <h1>Créer un nouveau compte utilisateur</h1>
+  <hr>
+  <%= simple_form_for @user, url: users_path do |c| %>
+
+  <%= c.input :firstname, label: 'Prénom' %>
+  <%= c.input :lastname, label: 'Nom' %>
+  <%= c.input :email,
+                required: true,
+                autofocus: true ,
+                input_html: { autocomplete: "email" }%>
+  <%= c.rich_text_area :description %>
+  <%= c.input :avatar,as: :file, label: "Image de profil"  %>
+  <%= f.input :editor, label: "Droits d'édition" %>
+  <%= f.input :animator, label: "Animateur/Animatrice" %>
+
+  <%= c.submit "Enregistrer", class:"btn btn-primary" %>
+  <% end %>
+</div>
