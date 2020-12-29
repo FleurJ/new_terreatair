@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_165533) do
+ActiveRecord::Schema.define(version: 2020_12_29_110044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(version: 2020_12_28_165533) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activities_tags_on_activity_id"
     t.index ["tag_id"], name: "index_activities_tags_on_tag_id"
+  end
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string "title"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "animator_schedules", force: :cascade do |t|
@@ -139,6 +146,21 @@ ActiveRecord::Schema.define(version: 2020_12_28_165533) do
     t.index ["schedule_id"], name: "index_schedules_activities_on_schedule_id"
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.string "production_date"
+    t.string "operation"
+    t.string "producer"
+    t.text "comment"
+    t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["product_id"], name: "index_stocks_on_product_id"
+    t.index ["user_id"], name: "index_stocks_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -192,4 +214,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_165533) do
   add_foreign_key "schedules", "users"
   add_foreign_key "schedules_activities", "activities"
   add_foreign_key "schedules_activities", "schedules"
+  add_foreign_key "stocks", "products"
+  add_foreign_key "stocks", "users"
 end
