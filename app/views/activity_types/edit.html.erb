@@ -1,0 +1,10 @@
+<div class="container margin-top">
+  <h1>Créer une catégorie</h1>
+  <hr>
+  <%= simple_form_for @activity_type, url: activity_type_path, method: :patch  do |t| %>
+  <%= t.input :title, label: 'Titre' %>
+  <%= t.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'] %>
+
+  <%= t.submit "Enregistrer", class: "btn btn-primary" %>
+  <% end %>
+</div>

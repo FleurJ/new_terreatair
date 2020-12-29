@@ -1,0 +1,10 @@
+<div class="container margin-top">
+  <h1>Créer un type d'activité</h1>
+  <hr>
+  <%= simple_form_for @activity_type, url: activity_types_path do |f| %>
+  <%= f.input :title, label: 'Titre' %>
+  <%= f.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'] %>
+  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+
+  <% end %>
+</div>
