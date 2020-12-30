@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_tags, only: [:new, :edit]
+  before_action :find_activitytypes, only: [:new, :edit]
 
   def show
     @activity = Activity.find(params[:id])
@@ -28,7 +29,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity.destroy
-    redirect_to root_path
+    redirect_to activities_path
   end
 
   def index
@@ -38,7 +39,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:title, :status, :teaser, :body, :booking_conditions, :activity_type, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header, tag_ids: [])
+    params.require(:activity).permit(:title, :status, :teaser, :body, :booking_conditions, :public, :duration, :links, :price, :language, :teaser, :img_thumbnail, :img_header, tag_ids: [], activitytype_ids: [])
   end
 
   def authorised_user
@@ -51,5 +52,9 @@ class ActivitiesController < ApplicationController
 
   def find_tags
     @tags = Tag.all
+  end
+
+  def find_activitytypes
+    @activitytypes = Activitytype.all
   end
 end

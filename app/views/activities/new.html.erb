@@ -3,6 +3,7 @@
   <hr>
   <%= simple_form_for @activity, url: activities_path do |f| %>
   <%= f.association :tags, collection: @tags, as: :check_boxes, input_html: { multiple: true}, label: 'Rubrique(s)' %>
+  <%= f.association :activitytypes, collection: @activitytypes, as: :check_boxes, input_html: {multiple: true}, label: 'Type d''activité' %>
 
   <%= f.input :title, label: 'Titre' %>
   <%= f.input :teaser, label: 'Chapeau - Teaser' %>
