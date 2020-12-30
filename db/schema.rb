@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_114556) do
+ActiveRecord::Schema.define(version: 2020_12_30_121543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,24 +68,6 @@ ActiveRecord::Schema.define(version: 2020_12_30_114556) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activities_tags_on_activity_id"
     t.index ["tag_id"], name: "index_activities_tags_on_tag_id"
-  end
-
-  create_table "activity_taxonomies", force: :cascade do |t|
-    t.bigint "activity_id", null: false
-    t.bigint "activitytypes_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["activity_id"], name: "index_activity_taxonomies_on_activity_id"
-    t.index ["activitytypes_id"], name: "index_activity_taxonomies_on_activitytypes_id"
-  end
-
-  create_table "activitytypes", force: :cascade do |t|
-    t.string "title"
-    t.boolean "active"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_activitytypes_on_user_id"
   end
 
   create_table "animator_schedules", force: :cascade do |t|
@@ -179,18 +161,6 @@ ActiveRecord::Schema.define(version: 2020_12_30_114556) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "titles", force: :cascade do |t|
-    t.string "type"
-    t.string "public"
-    t.float "price"
-    t.string "duration"
-    t.string "links"
-    t.string "language"
-    t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -214,9 +184,6 @@ ActiveRecord::Schema.define(version: 2020_12_30_114556) do
   add_foreign_key "activities", "users"
   add_foreign_key "activities_tags", "activities"
   add_foreign_key "activities_tags", "tags"
-  add_foreign_key "activity_taxonomies", "activities"
-  add_foreign_key "activity_taxonomies", "activitytypes", column: "activitytypes_id"
-  add_foreign_key "activitytypes", "users"
   add_foreign_key "animator_schedules", "schedules"
   add_foreign_key "animator_schedules", "users"
   add_foreign_key "contents", "users"

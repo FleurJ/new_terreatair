@@ -4,7 +4,6 @@
   <%= simple_form_for @activity, url: activities_path do |f| %>
   <%= f.association :tags, collection: @tags, as: :check_boxes, input_html: { multiple: true}, label: 'Rubrique(s)' %>
 
-  <%= f.input :activity_type, label: "Type d'activité" %>
   <%= f.input :title, label: 'Titre' %>
   <%= f.input :teaser, label: 'Chapeau - Teaser' %>
   <%= f.label :corps_de_texte %>
