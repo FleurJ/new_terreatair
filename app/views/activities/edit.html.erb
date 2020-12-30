@@ -1,9 +1,15 @@
 <div class="container margin-top">
-  <h1>Créer une nouvelle activité</h1>
+  <h1>Modifier <%= @activity.title %></h1>
   <hr>
   <%= simple_form_for @activity, url: activity_path, method: :patch do |f| %>
+  <div class="row">
+    <div class="col">
   <%= f.association :tags, collection: @tags, as: :check_boxes, input_html: { multiple: true}, label: 'Rubrique(s)' %>
-  <%= f.association :activitytypes, collection: @activitytypes, as: :check_boxes, label: 'Type d''activité' %>
+    </div>
+    <div class="col">
+  <%= f.association :activitytypes, collection: @activitytypes, as: :check_boxes, input_html: {multiple: true}, label: 'Type d''activité' %>
+    </div>
+  </div>
 
   <%= f.input :title, label: 'Titre' %>
   <%= f.input :teaser, label: 'Chapeau - Teaser' %>
@@ -11,15 +17,27 @@
   <%= f.rich_text_area :body, label: 'Corps de texte' %>
   <%= f.label :conditions_de_réservation %>
   <%= f.rich_text_area :booking_conditions, label: 'Conditions de réservation' %>
-  <%= f.input :price, as: :float, label: 'Prix' %>
-  <%= f.input :public, label: 'Public visé' %>
-  <%= f.input :duration, label: "Durée de l'activité" %>
-  <%= f.input :language, label: "Langue de l'activité" %>
+  <div class="row">
+    <div class="col">
+      <%= f.input :min_age, label: 'Age minimum' %>
+      <%= f.input :price, as: :float, label: 'Prix' %>
+      <%= f.input :duration, label: "Durée de l'activité" %>
+      <%= f.input :min_classes, label: "Nombre minimum de classes par jour" %>
+    </div>
+    <div class="col">
+      <%= f.input :max_age, label: 'Age maximum' %>
+      <%= f.input :debate, label: 'Avec débat' %>
+      <%= f.input :language, label: "Langue de l'activité" %>
+      <%= f.input :max_classes, label: "Nombre maximum de classes par jour" %>
+    </div>
+  </div>
   <%= f.input :links, label: 'Liens complémentaires' %>
   <%= f.input :img_header,as: :file, label: "Image pour l'entête de page"  %>
-  <%= f.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
+<%= f.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
   <%= f.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'] %>
 
   <%= f.submit "Enregistrer", class:"btn btn-primary" %>
   <% end %>
+  <p><%= cl_image_tag @activity.img_header.key, height: 100, width: 100, crop: :fill %></p>
+  <p><%= cl_image_tag @activity.img_thumbnail.key, height: 100, width: 100, crop: :fill %></p>
 </div>
