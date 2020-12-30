@@ -1,14 +1,15 @@
 <div class="container">
-  <h1>Modifier : <i><%= @product.name %></i></h1>
+  <h1>Modifier : mouvement n° <i><%= @stock.id %></i></h1>
   <hr>
-  <%= simple_form_for @product, url: product_path, method: :patch do |c| %>
-    <%= c.input :product_type, label: 'Type de produit' %>
-    <%= c.input :name, label: 'Nom du produit' %>
-    <%= c.input :price, label: 'Prix' %>
-    <%= c.label :description %>
-    <%= c.rich_text_area :description %>
-    <%= c.input :images, as: :file, label: "Photos du produit"  %>
-    <%= c.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
+  <%= simple_form_for @stock, url: stock_path, method: :patch do |c| %>
+  <%= c.association :product, collection: @products, label: 'Produit' %>
+
+  <%= c.input :quantity, label: 'Quantité' %>
+  <%= c.input :operation, label: 'Opération' %>
+  <%= c.input :origin, label: 'Pays (origine)' %>
+  <%= c.input :producer, label: 'Producteur' %>
+  <%= c.input :production_date, label: 'Date de production' %>
+  <%= c.input :comment, label: 'Commentaire' %>
 
   <%= c.submit "Enregistrer", class:"btn btn-primary" %>
   <% end %>

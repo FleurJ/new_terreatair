@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :users
     resources :memberships
     resources :products
-    resources :stock
+    resources :stocks
     resources :activity_types
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
