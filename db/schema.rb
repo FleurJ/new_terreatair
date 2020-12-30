@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_133703) do
+ActiveRecord::Schema.define(version: 2020_12_30_191534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_133703) do
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
-    t.string "public"
+    t.string "min_age"
     t.float "price"
     t.string "duration"
     t.string "links"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 2020_12_30_133703) do
     t.bigint "user_id", null: false
     t.text "teaser"
     t.bigint "activitytype_id"
+    t.string "max_age"
+    t.boolean "debate"
+    t.integer "min_classes"
+    t.integer "max_classes"
     t.index ["activitytype_id"], name: "index_activities_on_activitytype_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
