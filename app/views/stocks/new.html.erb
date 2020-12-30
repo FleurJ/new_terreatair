@@ -1,0 +1,17 @@
+<div class="container margin-top">
+  <h1>Ajouter du stock à un produit</h1>
+  <hr>
+  <%= simple_form_for @stock, url: stocks_path do |c| %>
+  <%= c.association :product, collection: @products, label: 'Produit' %>
+
+  <%= c.input :quantity, label: 'Quantité' %>
+  <%= c.input :operation, label: 'Opération' %>
+  <%= c.input :origin, label: 'Pays (origine)' %>
+  <%= c.input :producer, label: 'Producteur' %>
+  <%= c.input :production_date, label: 'Date de production' %>
+  <%= c.input :comment, label: 'Commentaire' %>
+
+
+  <%= c.submit "Enregistrer", class:"btn btn-primary" %>
+  <% end %>
+</div>
