@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Animations scolaires</h1>
+  <table>
+      <thead>
+          <tr>
+              <th>Animation</th>
+              <th>Age minimum</th>
+              <th>Age maximum</th>
+              <th>Avec débat</th>
+              <th>Nombre min. classe/jour</th>
+              <th>Nombre max. classe/jour</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @activities.each do |a| %>
+          <tr>
+              <td><%= link_to a.title, activity_path(a.id) %></td>
+              <td><%= a.min_age %></td>
+              <td><%= a.max_age %></td>
+              <td><%= a.debate %></td>
+              <td><%= a.min_classes %></td>
+              <td><%= a.max_classes %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+
+</div>
+
+

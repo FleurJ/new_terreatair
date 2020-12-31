@@ -36,6 +36,10 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
+  def school_table
+    @activities = Activity.where(status: 'published')
+  end
+
   private
 
   def activity_params
