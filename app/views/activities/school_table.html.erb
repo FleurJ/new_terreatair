@@ -12,7 +12,7 @@
           </tr>
       </thead>
       <tbody>
-        <% @activities.each do |a| %>
+        <% @animations.each do |a| %>
           <tr>
               <td><%= link_to a.title, activity_path(a.id) %></td>
               <td><%= a.min_age %></td>
