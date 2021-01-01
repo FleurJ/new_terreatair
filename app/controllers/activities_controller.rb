@@ -40,7 +40,7 @@ class ActivitiesController < ApplicationController
     @activities = Activity.where(status: 'published')
     @animations = []
     @activities.each do |a|
-      @animations << a if a.activitytype_ids == 1
+      @animations << a if a.activitytype_ids || 1
     end
   end
 
