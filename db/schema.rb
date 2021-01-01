@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_191534) do
+ActiveRecord::Schema.define(version: 2021_01_01_150145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,12 +144,12 @@ ActiveRecord::Schema.define(version: 2020_12_30_191534) do
 
   create_table "schedules", force: :cascade do |t|
     t.date "schedule_date"
-    t.integer "classes_qty"
     t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "time"
+    t.string "classes_qty"
     t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
