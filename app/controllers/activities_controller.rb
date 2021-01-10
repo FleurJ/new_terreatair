@@ -36,14 +36,6 @@ class ActivitiesController < ApplicationController
     @activities = Activity.all
   end
 
-  def school_table
-    @activities = Activity.where(status: 'published')
-    @animations = []
-    @activities.each do |a|
-      @animations << a if a.activitytype_ids || 1
-    end
-  end
-
   private
 
   def activity_params

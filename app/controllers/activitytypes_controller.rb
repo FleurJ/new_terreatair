@@ -30,6 +30,14 @@ class ActivitytypesController < ApplicationController
     redirect_to activitytypes_path
   end
 
+  def school_table
+    @animations = []
+    activities = @activitytype.activities.sort_by(&:title)
+    activities.each do |a|
+      @animations << a if a.title == 'Animation scolaire'
+    end
+  end
+
   private
 
   def find_activitytype
