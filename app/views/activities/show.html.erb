@@ -1,8 +1,11 @@
 <div class="container">
   <h1 class="content-title"><%= @activity.title %></h1>
-  <p><%= cl_image_tag @activity.img_header.key, height: 300, width: 400, crop: :fill %></p>
+  <% if @activity.img_header.present?  %>
+    <p><%= cl_image_tag @activity.img_header.key, height: 300, width: 400, crop: :fill %></p>
+  <% end %>
+    <% if @activity.img_thumbnail.present? %>
   <p><%= cl_image_tag @activity.img_thumbnail.key, height: 200, width: 200, crop: :fill %></p>
-
+  <% end %>
   <p class="teaser"><%= @activity.teaser %></p>
   <p><%= @activity.body %> </p>
   <p><%= @activity.price %> </p>
