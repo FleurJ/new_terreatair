@@ -1,10 +1,10 @@
 <div class="container">
   <h1 ><%= @product.name %></h1>
   <% @product.images.each do |i|%>
-  <p><%= cl_image_tag height: 120, width: 120, crop: :fill %></p>
-  <% end %>
-  <p><%= cl_image_tag @product.img_thumbnail.key, height: 120, width: 120, crop: :fill %></p>
-
+    <% if i.img_thumbnail.present? %>
+    <p><%= cl_image_tag i.img_thumbnail.key, height: 120, width: 120, crop: :fill %></p>
+    <% end %>
+    <% end %>
   <p><%= @product.description %> </p>
   <p><%= @product.price %> </p>
 
