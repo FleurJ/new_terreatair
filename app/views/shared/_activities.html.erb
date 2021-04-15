@@ -5,7 +5,9 @@
   <div class="col-4">
 
   <div class="card" style="width: 18rem;">
+    <% if activity.img_thumbnail.present?  %>
     <%= cl_image_tag activity.img_thumbnail.key, crop: :fill %>
+    <% end %>
     <div class="card-body">
       <h3 class="card-title"><%= activity.title %></h5>
       <p class="card-text">lorem ipsum</p>

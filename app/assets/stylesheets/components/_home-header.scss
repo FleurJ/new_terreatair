@@ -1,0 +1,16 @@
+.home-header-background {
+  background: image-url("home-banner.jpg");
+  background-size: cover;
+  height: 100vh;
+  color: #eee;
+  text-align: center;
+  background-position-y: -20px;
+}
+
+.container-headline {
+  position:absolute;
+  top: 50%;
+  margin: 0 auto;
+  text-align: center;
+  display: block
+}
