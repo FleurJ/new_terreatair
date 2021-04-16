@@ -7,3 +7,11 @@ a:hover {
   color: #000;
   text-decoration: none;
 }
+
+.navbar-light .navbar-nav .nav-link {
+  color: $or-taa;
+  font-family: $headers-font;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
