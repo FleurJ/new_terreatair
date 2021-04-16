@@ -1,12 +1,12 @@
 <div class="container">
   <h1 class="content-title"><%= @content.title %></h1>
-  <% if @activity.img_header.present?  %>
+  <% if @content.img_header.present?  %>
   <p><%= cl_image_tag @content.img_header.key, height: 300, width: 400, crop: :fill %></p>
   <% end %>
+  <% if @content.img_thumbnail.present? %>
   <p><%= cl_image_tag @content.img_thumbnail.key, height: 200, width: 200, crop: :fill %></p>
-  <% if @activity.img_thumbnail.present? %>
-  <p><%= @content.status %></p>
   <% end %>
+  <p><%= @content.status %></p>
   <p class="teaser"><%= @content.teaser %></p>
   <p><%= @content.body %> </p>
 <hr>
