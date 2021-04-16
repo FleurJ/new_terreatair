@@ -1,0 +1,13 @@
+.hexagone {
+  width: 300px;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  text-align: right;
+}
+
+.hexagone img {
+  width: 81%;
+  transform: rotate(90deg);
+}
+

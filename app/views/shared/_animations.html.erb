@@ -1,0 +1,28 @@
+<h2 class="home-h2">Nos animations</h2>
+<div class="marginblock30">
+  <% @intro_activity.each do |i| %>
+    <%= i.teaser %>
+  <% end %>
+</div>
+
+<div class="row">
+  <% @activities.each do |activity| %>
+    <div class="col-4">
+      <div class="card thumbnail-card">
+        <% if activity.img_thumbnail.present?  %>
+          <div class="thumbnail-img">
+            <div class="round-img">
+              <%= cl_image_tag activity.img_thumbnail.key, crop: :fill %>
+            </div>
+            <div class="hexagone">
+              <img src="<%= image_url("hexagone.png") %>">
+            </div>
+          </div>
+        <% end %>
+        <div class="card-body">
+          <h3 class="card-title"> <%= link_to activity.title, activity_path(activity.id) %></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
