@@ -9,19 +9,15 @@
   <% @products.each do |product| %>
     <div class="col-lg-4">
       <div class="card thumbnail-card">
-        <% if product.img_thumbnail.present?  %>
           <div class="thumbnail-img">
             <div class="round-img">
-              <%= cl_image_tag product.img_thumbnail.key, crop: :fill %>
-            </div>
-        <% else %>
-          <div class="thumbnail-img">
-            <div class="round-img">
-              <%= image_tag 'abeille.jpg' %>
+              <% if product.img_thumbnail.present?  %>
+                <%= cl_image_tag product.img_thumbnail.key, crop: :fill %>
+              <% else %>
+                <%= image_tag 'abeille.jpg' %>
+              <% end %>
             </div>
           </div>
-          </div>
-        <% end %>
         <div class="card-body">
           <h3 class="card-title"> <%= link_to product.name, product_path(product.id) %></h5>
         </div>
