@@ -33,11 +33,11 @@
   </div>
   <%= f.input :links, label: 'Liens complémentaires' %>
   <%= f.input :img_header,as: :file, label: "Image pour l'entête de page"  %>
+  <p><%= cl_image_tag @activity.img_header.key, height: 100, width: 100, crop: :fill %></p>
 <%= f.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
+  <p><%= cl_image_tag @activity.img_thumbnail.key, height: 100, width: 100, crop: :fill %></p>
   <%= f.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'] %>
 
   <%= f.submit "Enregistrer", class:"btn btn-primary" %>
   <% end %>
-  <p><%= cl_image_tag @activity.img_header.key, height: 100, width: 100, crop: :fill %></p>
-  <p><%= cl_image_tag @activity.img_thumbnail.key, height: 100, width: 100, crop: :fill %></p>
 </div>
