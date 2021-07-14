@@ -14,9 +14,12 @@
             <div class="round-img">
               <%= cl_image_tag product.img_thumbnail.key, crop: :fill %>
             </div>
-<!--             <div class="hexagone">
-              <img src="<%= image_url("hexagone.png") %>">
-            </div> -->
+        <% else %>
+          <div class="thumbnail-img">
+            <div class="round-img">
+              <%= image_tag 'abeille.jpg' %>
+            </div>
+          </div>
           </div>
         <% end %>
         <div class="card-body">
