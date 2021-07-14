@@ -7,25 +7,27 @@
 
 <div class="row">
   <% @formations.each do |formation| %>
-    <div class="col-lg-4">
-      <div class="card thumbnail-card">
-        <% if formation.img_thumbnail.present?  %>
-          <div class="thumbnail-img">
-            <div class="round-img">
-              <%= cl_image_tag formation.img_thumbnail.key, crop: :fill %>
+    <% if formation.status == "published" %>
+      <div class="col-lg-4">
+        <div class="card thumbnail-card">
+          <% if formation.img_thumbnail.present?  %>
+            <div class="thumbnail-img">
+              <div class="round-img">
+                <%= cl_image_tag formation.img_thumbnail.key, crop: :fill %>
+              </div>
+          <% else %>
+            <div class="thumbnail-img">
+              <div class="round-img">
+                <%= image_tag 'abeille.jpg' %>
+              </div>
             </div>
-        <% else %>
-          <div class="thumbnail-img">
-            <div class="round-img">
-              <%= image_tag 'abeille.jpg' %>
             </div>
+          <% end %>
+          <div class="card-body">
+            <h3 class="card-title"> <%= link_to formation.title, formation_path(formation.id) %></h5>
           </div>
-          </div>
-        <% end %>
-        <div class="card-body">
-          <h3 class="card-title"> <%= link_to formation.title, formation_path(formation.id) %></h5>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
