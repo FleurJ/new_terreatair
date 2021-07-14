@@ -7,16 +7,16 @@
 
 <div class="row">
   <% @products.each do |product| %>
-    <div class="col-4">
+    <div class="col-lg-4">
       <div class="card thumbnail-card">
         <% if product.img_thumbnail.present?  %>
           <div class="thumbnail-img">
             <div class="round-img">
               <%= cl_image_tag product.img_thumbnail.key, crop: :fill %>
             </div>
-            <div class="hexagone">
+<!--             <div class="hexagone">
               <img src="<%= image_url("hexagone.png") %>">
-            </div>
+            </div> -->
           </div>
         <% end %>
         <div class="card-body">
