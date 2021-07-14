@@ -2,6 +2,7 @@ class ContentsController < ApplicationController
   before_action :find_content, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_tags, only: [:new, :edit]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def show
     @content = Content.find(params[:id])
