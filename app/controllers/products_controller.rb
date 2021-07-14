@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def show
     @product = Product.find(params[:id])

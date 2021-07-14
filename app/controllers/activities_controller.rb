@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_tags, only: [:new, :edit]
   before_action :find_activitytypes, only: [:new, :edit]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def show
     @activity = Activity.find(params[:id])
