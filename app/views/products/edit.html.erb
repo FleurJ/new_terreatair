@@ -8,7 +8,9 @@
     <%= c.label :description %>
     <%= c.rich_text_area :description %>
     <%= c.input :images, as: :file, label: "Photos du produit"  %>
-    <p><%= cl_image_tag @product.images, height: 100, width: 100, crop: :fill %></p>
+    <% if @product.images.present? %>
+    <p><%= cl_image_tag @product.images.key, height: 100, width: 100, crop: :fill %></p>
+    <% end %>
     <%= c.input :img_thumbnail, as: :file, label: 'Image pour les galleries'  %>
     <% if @product.img_thumbnail.present? %>
     <p><%= cl_image_tag @product.img_thumbnail.key, height: 100, width: 100, crop: :fill %></p>

@@ -1,12 +1,21 @@
 <div class="container">
-  <h1 ><%= @product.name %></h1>
-  <% if @product.images.present? %>
-   <% @product.images.each do |i|%>
-    <p><%= cl_image_tag i.key, height: 120, width: 120, crop: :fill %></p>
-    <% end %>
-    <% end %>
-  <p><%= @product.description %> </p>
-  <p><%= @product.price %> </p>
+  <h1 class="golden-background"><%= @product.name %></h1>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="product-img">
+        <div class="round-img">
+          <% if @product.images.present? %>
+            <p><%= cl_image_tag @product.images.key, height: 120, width: 120, crop: :fill %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <p><%= @product.description %> </p>
+      <p><label>Prix TTC :</label>&nbsp; <%= @product.price %> €</p>
+        <%= button_to "Acheter", "#", class:"btn btn-primary btn-gold" %>
+    </div>
+  </div>
 
 
   <% if user_signed_in? %>
@@ -31,3 +40,5 @@
 </div>
 
 
+
+</div>
