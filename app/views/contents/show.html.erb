@@ -1,20 +1,29 @@
 <div class="container">
-  <h1 class="content-title"><%= @content.title %></h1>
-  <% if @content.img_header.present?  %>
-  <p><%= cl_image_tag @content.img_header.key, height: 300, width: 400, crop: :fill %></p>
-  <% end %>
-  <% if @content.img_thumbnail.present? %>
-  <p><%= cl_image_tag @content.img_thumbnail.key, height: 200, width: 200, crop: :fill %></p>
-  <% end %>
-  <p><%= @content.status %></p>
+  <div class="page-header">
+    <% if @content.img_header.present?  %>
+    <%= cl_image_tag @content.img_header.key %>
+    <% end %>
+    <h1 class="golden-background"><%= @content.title %></h1>
+  </div>
   <p class="teaser"><%= @content.teaser %></p>
   <p><%= @content.body %> </p>
+
+<!-- === Liste produits ou animations === -->
+  <% if @content.id == 4 %>
+    <%= render 'shared/animations' %>
+  <% end %>
+  <% if @content.id == 7 %>
+    <%= render 'shared/products' %>
+  <% end %>
+
 <hr>
+  <!-- === MENU ADMIN -->
   <% if user_signed_in? %>
     <% if current_user.admin == true %>
     <div class="row">
       <div class="col-8">
        <p>Créé le <%= @content.created_at %>, par <%= @content.user.firstname %> - Modifié le <%= @content.updated_at %></p>
+        <p><%= @content.status %></p>
       </div>
       <div class="col-2">
       <%= button_to "Supprimer", content_path(@content),
@@ -28,12 +37,6 @@
       </div>
     </div>
     <% end %>
-  <% end %>
-  <% if @content.id == 6 %>
-    <%= render 'shared/animations' %>
-  <% end %>
-  <% if @content.id == 7 %>
-    <%= render 'shared/products' %>
   <% end %>
 </div>
 

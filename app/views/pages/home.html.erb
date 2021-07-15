@@ -6,8 +6,20 @@
     </div>
   </div>
 <div class="container">
-    <%= render 'shared/intro' %>
+  <%= render 'shared/intro' %>
+  <h2 class="home-h2">Nos animations</h2>
+    <div class="marginblock30">
+      <% @intro_activity.each do |i| %>
+      <%= i.teaser %>
+      <% end %>
+    </div>
     <%= render 'shared/animations' %>
+    <h2 class="home-h2">Nos produits</h2>
+    <div class="marginblock30">
+      <% @intro_product.each do |i| %>
+      <%= i.teaser %>
+      <% end %>
+    </div>
     <%= render 'shared/products' %>
 
 </div>
