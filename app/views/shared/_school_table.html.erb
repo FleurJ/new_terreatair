@@ -1,0 +1,32 @@
+<div class="golden-box">
+  <h2>Comparatif</h2>
+  <div class="row">
+      <div class="col-lg-5 white-bgd">
+        <label>Animation</label>
+      </div>
+      <div class="col-lg-2 white-bgd">
+        <label>Age min./max.</label>
+      </div>
+      <div class="col-lg-2 white-bgd">
+        <label>Avec débat</label>
+      </div>
+      <div class="col-lg-2 white-bgd">
+        <label>Nbre classes/jour</label>
+      </div>
+  </div>
+
+  <% @activities.each do |a| %>
+    <% if a.activitytypes.ids.include? 2 %>
+      <div class="row">
+        <div class="col-lg-5 white-bgd"><%= link_to a.title, activity_path(a.id) %></div>
+        <div class="col-lg-2 white-bgd"><%= a.min_age %>/<%= a.max_age %></div>
+        <div class="col-lg-2 white-bgd"><%= a.debate %></div>
+        <div class="col-lg-2 white-bgd">min. <%= a.min_classes %>/ max. <%= a.max_classes %></div>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
+
+
+
