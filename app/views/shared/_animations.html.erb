@@ -8,7 +8,7 @@
 <div class="row">
   <% @activities.each do |activity| %>
   <% if activity.status == "published" %>
-    <% if activity.activitytypes == "animation" %>
+    <% if activity.activitytypes.ids.include? 1 %>
         <div class="col-lg-4">
           <div class="card thumbnail-card">
             <% if activity.img_thumbnail.present?  %>
