@@ -8,6 +8,7 @@
 <div class="row">
   <% @formations.each do |formation| %>
     <% if formation.status == "published" %>
+    <% if activity.activitytypes.ids.include? 3 %>
       <div class="col-lg-4">
         <div class="card thumbnail-card">
           <% if formation.img_thumbnail.present?  %>
@@ -28,6 +29,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
