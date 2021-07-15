@@ -6,7 +6,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.find(params[:id])
-     @activities = Activity.where(status: 'published')
+    @activities = Activity.where(status: 'published')
     @intro = Content.where(title: 'Qui sommes-nous ?')
     @intro_activity = Content.where(title: 'Nos animations')
     @products = Product.all
