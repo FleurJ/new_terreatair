@@ -7,13 +7,13 @@ class UsersController < ApplicationController
   end
 
   def new
-    @User = User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(content_params)
     @user.save
-    redirect_to user_path(@user)
+    redirect_to users_path
   end
 
   def show
