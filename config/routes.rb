@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'bookings/new'
+  get 'bookings/create'
+  get 'bookings/show'
+  get 'bookings/edit'
+  get 'bookings/update'
+  get 'bookings/destroy'
+  get 'bookings/index'
   get 'sponsorships/index'
   get 'sponsorships/new'
   get 'sponsorships/create'
