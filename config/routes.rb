@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'addresses/new'
+  get 'addresses/create'
+  get 'addresses/update'
+  get 'addresses/edit'
+  get 'addresses/destroy'
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/show'

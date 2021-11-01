@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_093759) do
+ActiveRecord::Schema.define(version: 2021_11_01_094455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,21 @@ ActiveRecord::Schema.define(version: 2021_11_01_093759) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_activitytypes_on_user_id"
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "type"
+    t.string "address1"
+    t.string "address2"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "company"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "animator_schedules", force: :cascade do |t|
@@ -210,6 +225,15 @@ ActiveRecord::Schema.define(version: 2021_11_01_093759) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_addresses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "address_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_user_addresses_on_address_id"
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -252,4 +276,6 @@ ActiveRecord::Schema.define(version: 2021_11_01_093759) do
   add_foreign_key "schedules_activities", "schedules"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "users"
+  add_foreign_key "user_addresses", "addresses"
+  add_foreign_key "user_addresses", "users"
 end
