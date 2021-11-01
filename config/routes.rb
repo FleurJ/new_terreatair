@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sponsorships/index'
+  get 'sponsorships/new'
+  get 'sponsorships/create'
+  get 'sponsorships/edit'
+  get 'sponsorships/update'
+  get 'sponsorships/destroy'
   devise_for :users
 
   scope '(:locale)', locale: /fr|nl|en/ do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_150145) do
+ActiveRecord::Schema.define(version: 2021_11_01_092329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,14 @@ ActiveRecord::Schema.define(version: 2021_01_01_150145) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_schedules_activities_on_activity_id"
     t.index ["schedule_id"], name: "index_schedules_activities_on_schedule_id"
+  end
+
+  create_table "sponsorships", force: :cascade do |t|
+    t.integer "amount"
+    t.boolean "recurring"
+    t.string "frequency"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stocks", force: :cascade do |t|
