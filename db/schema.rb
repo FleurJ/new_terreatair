@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_092329) do
+ActiveRecord::Schema.define(version: 2021_11_01_093759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,23 @@ ActiveRecord::Schema.define(version: 2021_11_01_092329) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["schedule_id"], name: "index_animator_schedules_on_schedule_id"
     t.index ["user_id"], name: "index_animator_schedules_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "status"
+    t.integer "cost"
+    t.date "booking_date"
+    t.string "cancellation_reason"
+    t.boolean "refunded"
+    t.bigint "user_id", null: false
+    t.bigint "schedule_id", null: false
+    t.bigint "activity_id", null: false
+    t.string "validation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_bookings_on_activity_id"
+    t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -222,6 +239,9 @@ ActiveRecord::Schema.define(version: 2021_11_01_092329) do
   add_foreign_key "activitytypes", "users"
   add_foreign_key "animator_schedules", "schedules"
   add_foreign_key "animator_schedules", "users"
+  add_foreign_key "bookings", "activities"
+  add_foreign_key "bookings", "schedules"
+  add_foreign_key "bookings", "users"
   add_foreign_key "contents", "users"
   add_foreign_key "contents_tags", "contents"
   add_foreign_key "contents_tags", "tags"
