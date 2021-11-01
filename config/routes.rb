@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'order/new'
+  get 'order/create'
+  get 'order/show'
+  get 'order/edit'
+  get 'order/update'
+  get 'order/index'
+  get 'order/destroy'
   get 'addresses/new'
   get 'addresses/create'
   get 'addresses/update'
