@@ -7,7 +7,11 @@
   <div class="form-inputs">
     <%= f.input :firstname, label: 'Prénom', required:true %>
     <%= f.input :lastname, label: 'Nom', required: true %>
-    <%= f.rich_text_area :description %>
+    <% if current_user != nil %>
+      <%= f.rich_text_area :description,
+                           label: 'Description',
+                           hint: "Cette description sera affichée dans la présentation des animatrices et animateurs" %>
+    <% end %>
     <%= f.input :email,
                 required: true,
                 autofocus: true ,
