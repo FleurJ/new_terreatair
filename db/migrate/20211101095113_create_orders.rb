@@ -1,7 +1,7 @@
 class CreateOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
-      t.rereferences :user
+      t.references :user
       t.string :discount_code
       t.integer :total_cost
       t.integer :number
