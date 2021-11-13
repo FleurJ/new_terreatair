@@ -1,5 +1,5 @@
 <div class="container margin-top">
-  <h1>Modifier le nouveau créneau de réservation</h1>
+  <h1>Modifier la réservation</h1>
   <hr>
   <%= simple_form_for @schedule, url: schedule_path, method: :patch do |f| %>
   <%= f.input :schedule_date, as: :string, required: true, label: 'Date souhaitée', input_html: {class: "datepicker"} %>
