@@ -6,11 +6,6 @@ Rails.application.routes.draw do
   get 'order/update'
   get 'order/index'
   get 'order/destroy'
-  get 'addresses/new'
-  get 'addresses/create'
-  get 'addresses/update'
-  get 'addresses/edit'
-  get 'addresses/destroy'
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/show'
@@ -37,6 +32,7 @@ Rails.application.routes.draw do
     resources :products
     resources :stocks
     resources :activitytypes
+    resources :addresses
     get '/animations', to: 'activities#school_table'
 
   end

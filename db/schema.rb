@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_095113) do
+ActiveRecord::Schema.define(version: 2021_11_13_205025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_11_01_095113) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "type"
+    t.string "address_type"
     t.string "address1"
     t.string "address2"
     t.string "zipcode"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_11_01_095113) do
     t.string "company"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "animator_schedules", force: :cascade do |t|
@@ -282,6 +284,7 @@ ActiveRecord::Schema.define(version: 2021_11_01_095113) do
   add_foreign_key "activity_activitytypes", "activities"
   add_foreign_key "activity_activitytypes", "activitytypes"
   add_foreign_key "activitytypes", "users"
+  add_foreign_key "addresses", "users"
   add_foreign_key "animator_schedules", "schedules"
   add_foreign_key "animator_schedules", "users"
   add_foreign_key "bookings", "activities"
