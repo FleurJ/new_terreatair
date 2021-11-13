@@ -35,3 +35,7 @@ document.addEventListener('turbolinks:load', () => {
 
 require("trix")
 require("@rails/actiontext")
+
+import { initFlatpickr } from "../plugins/flatpickr";
+
+initFlatpickr();
