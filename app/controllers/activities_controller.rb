@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :find_activity, only: [:update, :edit, :destroy]
+  before_action :find_activity, only: [:update, :edit, :destroy, :destroy_img]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_tags, only: [:new, :edit]
   before_action :find_activitytypes, only: [:new, :edit]
@@ -43,6 +43,16 @@ class ActivitiesController < ApplicationController
     @activities.each do |a|
       @animations << a if a.activitytype_ids || 1
     end
+  end
+
+  def destroy_img_header
+    @activity.img_header.purge
+  end
+
+  def destroy_img_thumbnail
+    @activity.img_thumbnail.purge
+    @activity.save
+    redirect_to activity_edit_path(@activity)
   end
 
   private
