@@ -1,2 +1,41 @@
-<h1>Sponsorships#index</h1>
-<p>Find me in app/views/sponsorships/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1>Gestion des parrainages</h1>
+    </div>
+    <div class="col-4">
+      <%= link_to 'Ajouter un parrainage', new_sponsorship_path, class:'btn btn-primary btn-right' %>
+    </div>
+  </div>
+  <hr>
+
+    <% @sponsorships.each do |s| %>
+      <div class="row">
+        <div class="col-2">
+          <small><%= s.created_at.strftime("%d.%m.%Y") %></small>
+        </div>
+        <div class="col-3">
+          <%= s.user.firstname %> <%= s.user.lastname %>
+        </div>
+        <div class="col-2">
+          <%= s.sponsorship_type %>
+        </div>
+        <div class="col-1">
+          <%= s.amount %> €
+        </div>
+        <div class="col-2">
+          <%= s.frequency %>
+        </div>
+      <div class="col-1">
+        <%= button_to "Modifier", edit_sponsorship_path(s.id),
+            method: :get, class:"btn btn-primary" %>
+      </div>
+      <div class="col-1">
+              <%= button_to "Supprimer", sponsorship_path(s.id),
+                  method: :delete,
+                  data: { confirm: "Veuillez confirmer la suppression !" },
+                 :id => "delete", class:"btn btn-danger" %>
+      </div>
+      </div>
+    <% end %>
+</div>

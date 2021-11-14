@@ -13,12 +13,7 @@ Rails.application.routes.draw do
   get 'bookings/update'
   get 'bookings/destroy'
   get 'bookings/index'
-  get 'sponsorships/index'
-  get 'sponsorships/new'
-  get 'sponsorships/create'
-  get 'sponsorships/edit'
-  get 'sponsorships/update'
-  get 'sponsorships/destroy'
+
   devise_for :users
 
   scope '(:locale)', locale: /fr|nl|en/ do
@@ -33,6 +28,7 @@ Rails.application.routes.draw do
     resources :stocks
     resources :activitytypes
     resources :addresses
+    resources :sponsorships
     get '/animations', to: 'activities#school_table'
 
   end

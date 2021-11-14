@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_205025) do
+ActiveRecord::Schema.define(version: 2021_11_14_135746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,10 @@ ActiveRecord::Schema.define(version: 2021_11_13_205025) do
     t.string "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sponsorship_type"
+    t.bigint "user_id", null: false
+    t.string "sponsor_type"
+    t.index ["user_id"], name: "index_sponsorships_on_user_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -298,6 +302,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_205025) do
   add_foreign_key "schedules", "users"
   add_foreign_key "schedules_activities", "activities"
   add_foreign_key "schedules_activities", "schedules"
+  add_foreign_key "sponsorships", "users"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "users"
   add_foreign_key "user_addresses", "addresses"
