@@ -57,6 +57,7 @@ class ActivitiesController < ApplicationController
 
   def authorised_user
     return true if current_user.admin == true
+    #return true if current_user.role == 'editor'
   end
 
   def find_activity
