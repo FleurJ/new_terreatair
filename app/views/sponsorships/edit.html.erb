@@ -1,10 +1,41 @@
 <div class="container margin-top">
   <h1>Modifier le parrainage</h1>
   <hr>
-  <%= simple_form_for @sponsorship, url: sponsorship_path, method: :patch do |f| %>
-  <%= f.input :recurring, as: :checkboxes, label: "Renouvellement automatique" %>
-  <%= f.input :frequency, label: 'Fréquence', collection: ['don unique', 'annuel', 'trimestriel', 'mensuel'] %>
-  <%= f.input :amount, label: 'Montant (en euro)' %>
-  <%= f.submit "Enregistrer", class: "btn btn-primary" %>
-  <% end %>
+
+  <div class="accordion" id="parrainage">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingParticulier">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseParticulier" aria-expanded="true" aria-controls="collapseParticulier">
+          Parrainage - Particulier
+        </button>
+      </h2>
+      <div id="collapseParticulier" class="accordion-collapse collapse show" aria-labelledby="headingParticulier" data-bs-parent="#parrainage">
+        <div class="accordion-body">
+
+          <%= simple_form_for @sponsorship, url: sponsorship_path, method: :patch do |f| %>
+            <%= f.input :sponsorship_type, as: :radio_buttons, label: 'Formule', collection: ['Complet', 'Volontaire', 'Participatif', 'Libre'] %>
+            <%= f.input :frequency, label: 'Fréquence', collection: ['parrainage unique', 'annuel', 'trimestriel', 'mensuel'] %>
+            <%= f.input :amount, label: 'Montant (en euro)' %>
+            <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingEntreprise">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEntreprise" aria-expanded="false" aria-controls="collapseEntreprise">
+          Parrainage - Entreprise
+        </button>
+      </h2>
+      <div id="collapseEntreprise" class="accordion-collapse collapse" aria-labelledby="headingEntreprise" data-bs-parent="#parrainage">
+        <div class="accordion-body">
+          <%= simple_form_for @sponsorship, url: sponsorship_path, method: :patch do |f| %>
+            <%= f.input :sponsorship_type, as: :radio_buttons, label: 'Formule', collection: ['propolis', 'nectar'] %>
+            <%= f.input :frequency, label: 'Fréquence', collection: ['parrainage unique', 'annuel', 'trimestriel', 'mensuel'] %>
+            <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+          <% end %>      </div>
+      </div>
+    </div>
+  </div>
 </div>
+<script src="application.js"></script>

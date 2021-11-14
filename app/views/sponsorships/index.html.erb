@@ -14,10 +14,13 @@
         <div class="col-2">
           <small><%= s.created_at.strftime("%d.%m.%Y") %></small>
         </div>
-        <div class="col-4">
+        <div class="col-3">
           <%= s.user.firstname %> <%= s.user.lastname %>
         </div>
         <div class="col-2">
+          <%= s.sponsorship_type %>
+        </div>
+        <div class="col-1">
           <%= s.amount %> €
         </div>
         <div class="col-2">

@@ -1,7 +1,7 @@
 class SponsorshipsController < ApplicationController
   before_action :find_sponsorship, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:update, :edit, :destroy]
-  before_action :authroised_admin, only: [:index]
+  before_action :authorised_admin, only: [:index]
 
   def index
     @sponsorships = Sponsorship.all
@@ -52,7 +52,7 @@ class SponsorshipsController < ApplicationController
 
   def redirect
     if current_user.admin == true
-      redirect_to sponsorships_path(@sponsorship)
+      redirect_to sponsorships_path
     else
       redirect_to user_path(@user)
     end
