@@ -47,10 +47,13 @@ class ActivitiesController < ApplicationController
 
   def destroy_img_header
     @activity.img_header.purge
+    @activity.save
+    redirect_to activity_edit_path(@activity)
   end
 
   def destroy_img_thumbnail
-    @activity.img_thumbnail.purge
+    @img = @activity.img_thumbnail.first
+    @img.purge
     @activity.save
     redirect_to activity_edit_path(@activity)
   end

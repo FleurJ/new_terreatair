@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :activitytypes
     resources :addresses
     resources :sponsorships
+    get 'activities/destroy_img_thumbnail'
     get '/animations', to: 'activities#school_table'
 
   end
